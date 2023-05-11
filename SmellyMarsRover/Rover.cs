@@ -124,35 +124,4 @@ namespace SmellyMarsRover
             return $"{nameof(_direction)}: {_direction}, {nameof(_coordinates)}: {_coordinates}";
         }
     }
-
-    internal record Coordinates(int x, int y)
-    {
-        public Coordinates MoveAlongYAxis(int displacement)
-        {
-            return new Coordinates(this.x, this.y + displacement);
-        }
-
-        public Coordinates MoveAlongXAxis(int displacement)
-        {
-            return new Coordinates(this.x + displacement, this.y);
-        }
-    }
-
-    internal record Direction(string Value)
-    {
-        public bool IsFacingNorth()
-        {
-            return this.Value.Equals("N");
-        }
-
-        public bool IsFacingSouth()
-        {
-            return this.Value.Equals("S");
-        }
-
-        public bool IsFacingWest()
-        {
-            return this.Value.Equals("W");
-        }
-    }
 }
