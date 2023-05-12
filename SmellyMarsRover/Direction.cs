@@ -43,6 +43,26 @@ internal abstract record Direction(string Value)
 
     public abstract Direction RotateLeft();
 
+    public Direction RotateRight()
+    {
+        if (IsFacingNorth())
+        {
+            return Create(EAST);
+        }
+
+        if (IsFacingSouth())
+        {
+            return Create(WEST);
+        }
+
+        if (IsFacingWest())
+        {
+            return Create(NORTH);
+        }
+
+        return Create(SOUTH);
+    }
+
     private record East() : Direction(EAST)
     {
         public override Direction RotateLeft()
