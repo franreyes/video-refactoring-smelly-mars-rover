@@ -45,6 +45,8 @@ internal abstract record Direction(string Value)
 
     public abstract Direction RotateRight();
 
+    public abstract Coordinates Move(Coordinates coordinates, int displacement);
+
     private record East() : Direction(EAST)
     {
         public override Direction RotateLeft()
@@ -55,6 +57,11 @@ internal abstract record Direction(string Value)
         public override Direction RotateRight()
         {
             return Create(SOUTH);
+        }
+
+        public override Coordinates Move(Coordinates coordinates, int displacement)
+        {
+            return coordinates.MoveAlongXAxis(displacement);
         }
     }
 
@@ -69,6 +76,11 @@ internal abstract record Direction(string Value)
         {
             return Create(NORTH);
         }
+
+        public override Coordinates Move(Coordinates coordinates, int displacement)
+        {
+            return coordinates.MoveAlongXAxis(-displacement);
+        }
     }
 
     private record South() : Direction(SOUTH)
@@ -81,6 +93,11 @@ internal abstract record Direction(string Value)
         public override Direction RotateRight()
         {
             return Create(WEST);
+        }
+
+        public override Coordinates Move(Coordinates coordinates, int displacement)
+        {
+            return coordinates.MoveAlongYAxis(-displacement);
         }
     }
 
@@ -95,25 +112,10 @@ internal abstract record Direction(string Value)
         {
             return Create(EAST);
         }
-    }
 
-    public Coordinates Move(Coordinates coordinates, int displacement)
-    {
-        if (IsFacingNorth())
+        public override Coordinates Move(Coordinates coordinates, int displacement)
         {
             return coordinates.MoveAlongYAxis(displacement);
         }
-
-        if (IsFacingSouth())
-        {
-            return coordinates.MoveAlongYAxis(-displacement);
-        }
-
-        if (IsFacingWest())
-        {
-            return coordinates.MoveAlongXAxis(-displacement);
-        }
-
-        return coordinates.MoveAlongXAxis(displacement);
     }
 }
