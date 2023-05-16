@@ -1,14 +1,14 @@
 namespace SmellyMarsRover;
 
-internal record Coordinates(int x, int y)
+internal record Coordinates(int X, int Y)
 {
     public Coordinates MoveAlongYAxis(int displacement)
     {
-        return new Coordinates(this.x, this.y + displacement);
+        return new Coordinates(X, Y + displacement);
     }
 
     public Coordinates MoveAlongXAxis(int displacement)
     {
-        return new Coordinates(this.x + displacement, this.y);
+        return new Coordinates(X + displacement, Y);
     }
 }
