@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SmellyMarsRover
 {
@@ -21,10 +22,15 @@ namespace SmellyMarsRover
 
         public void Receive(string commandsSequence)
         {
+            IList<string> commands = new List<string>();
             for (var i = 0; i < commandsSequence.Length; ++i)
             {
                 var command = commandsSequence.Substring(i, 1);
+                commands.Add(command);
+            }
 
+            foreach (var command in commands)
+            {
                 Execute(command);
             }
         }
