@@ -1,6 +1,6 @@
 namespace SmellyMarsRover;
 
-internal abstract record Direction(string Value)
+internal abstract record Direction
 {
     private const string WEST = "W";
     private const string EAST = "E";
@@ -32,7 +32,7 @@ internal abstract record Direction(string Value)
 
     public abstract Coordinates Move(Coordinates coordinates, int displacement);
 
-    private record East() : Direction(EAST)
+    private record East : Direction
     {
         public override Direction RotateLeft()
         {
@@ -50,7 +50,7 @@ internal abstract record Direction(string Value)
         }
     }
 
-    private record West() : Direction(WEST)
+    private record West : Direction
     {
         public override Direction RotateLeft()
         {
@@ -68,7 +68,7 @@ internal abstract record Direction(string Value)
         }
     }
 
-    private record South() : Direction(SOUTH)
+    private record South : Direction
     {
         public override Direction RotateLeft()
         {
@@ -86,7 +86,7 @@ internal abstract record Direction(string Value)
         }
     }
 
-    private record North() : Direction(NORTH)
+    private record North : Direction
     {
         public override Direction RotateLeft()
         {
