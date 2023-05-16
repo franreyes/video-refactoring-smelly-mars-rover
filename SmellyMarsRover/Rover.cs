@@ -25,22 +25,27 @@ namespace SmellyMarsRover
             {
                 var command = commandsSequence.Substring(i, 1);
 
-                if (command.Equals("l"))
-                {
-                    _direction = _direction.RotateLeft();
-                }
-                else if (command.Equals("r"))
-                {
-                    _direction = _direction.RotateRight();
-                }
-                else if (command.Equals("f"))
-                {
-                    _coordinates = _direction.Move(_coordinates, Displacement);
-                }
-                else
-                {
-                    _coordinates = _direction.Move(_coordinates, -Displacement);
-                }
+                Execute(command);
+            }
+        }
+
+        private void Execute(string command)
+        {
+            if (command.Equals("l"))
+            {
+                _direction = _direction.RotateLeft();
+            }
+            else if (command.Equals("r"))
+            {
+                _direction = _direction.RotateRight();
+            }
+            else if (command.Equals("f"))
+            {
+                _coordinates = _direction.Move(_coordinates, Displacement);
+            }
+            else
+            {
+                _coordinates = _direction.Move(_coordinates, -Displacement);
             }
         }
 
