@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SmellyMarsRover
 {
@@ -23,28 +24,12 @@ namespace SmellyMarsRover
         public void Receive(string commandsSequence)
         {
             var commands = ExtractCommands(commandsSequence);
-
-            Execute(commands);
-        }
-
-        private void Execute(IList<string> commands)
-        {
-            foreach (var command in commands)
-            {
-                Execute(command);
-            }
+            commands.ToList().ForEach(Execute);
         }
 
         private IList<string> ExtractCommands(string commandsSequence)
         {
-            IList<string> commands = new List<string>();
-            for (var i = 0; i < commandsSequence.Length; ++i)
-            {
-                var command = commandsSequence.Substring(i, 1);
-                commands.Add(command);
-            }
-
-            return commands;
+            return commandsSequence.Select(Char.ToString).ToList();
         }
 
         private void Execute(string command)
