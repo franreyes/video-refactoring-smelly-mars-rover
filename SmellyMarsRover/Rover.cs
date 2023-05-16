@@ -9,7 +9,7 @@ namespace SmellyMarsRover
 
         public Rover(int x, int y, string direction)
         {
-            _direction = Direction.Create(direction);
+            _direction = DirectionMapper.Create(direction);
             SetCoordinates(x, y);
         }
 
